@@ -1,0 +1,27 @@
+input Inputset {
+    name: String!
+    reps: Int!
+    weight: Float
+}
+type InsertsetDone {
+    Insertedid:ID
+}
+
+type Mutation {
+  insertSet(
+  document:Inputset,
+  collection:String,
+  dataSource:String,
+  database:String): InsertsetDone
+    @rest(
+      method: POST
+      endpoint: "https://ap-south-1.aws.data.mongodb-api.com/app/data-tbrgibz/endpoint/data/v1/action/insertOne"
+      headers: [
+        { name: "accecpt", value: "application/json" }
+        {
+          name: "api-key"
+          value: "zAOyudhOwQCPP11zOjHWdz4kkoCMBhNj9DuHo6by4xzefYuAUpjwVNppHxfydJB9"
+        }
+      ]
+    )
+}
