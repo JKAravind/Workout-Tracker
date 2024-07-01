@@ -7,18 +7,19 @@ import { useMutation } from "@tanstack/react-query";
 
 
 export default function SetsRep({name}){
-    console.log(name)
+
     const mutateQuery = gql`
     mutation MyMutation($Inputset: Inputset!) {
-  insertSet(
-    document: $Inputset
-    collection: "Sets"
-    database: "Workout"
-    dataSource: "Cluster0"
-  ) {
-    Insertedid
-  }
-}`
+        insertSet(
+            document: $Inputset
+            collection: "Sets"
+            database: "Workout"
+            dataSource: "Cluster0"
+        ) {
+            Insertedid
+        }
+    }`
+
     const {mutate} = useMutation({
         mutationFn:(Inputset)=>client.request(mutateQuery,{Inputset}),
         });
@@ -30,8 +31,8 @@ export default function SetsRep({name}){
         console.log(rep,weight)
         mutate({
             name:name,
-            reps:parseInt(rep,10),
-            weight:parseFloat(weight)
+            reps:weight,
+            weight:rep
         })
         //after add set reps and weight to null
 
@@ -84,7 +85,4 @@ const style = StyleSheet.create({
     box_text:{
         borderColor:'black',                
     }
-    
-
-
 })

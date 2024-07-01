@@ -39,8 +39,6 @@ export default function ExerciseDetailsScreen() {
     return <Text>Failed to fetch data</Text>;
   }
 
-  
-
   const exercise = data.exercise[0];
 
   return(
